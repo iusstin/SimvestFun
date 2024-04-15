@@ -1,0 +1,43 @@
+<div *ngIf="this.followboardUsers.length > 0 && this.authService.connectedUser != undefined">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table container">
+        <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+    
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="4">
+                {{column.header}}
+            </th>
+    
+            <td mat-cell *matCellDef="let row, let i = index" (click)="goToUserPage(row.id)">
+    
+                <span *ngIf="column.columnDef === 'index'">{{i+1}}</span>
+    
+                <img *ngIf="column.columnDef === 'avatar'" [src] = 'column.cell(row)'>
+    
+                <span *ngIf="column.columnDef === 'portfolio'">
+                    <span class="align-right ajust-font-size">
+                        {{column.cell(row) | currency: 'USD'}}
+                    </span>
+                    <br>
+                    <span class="portfolioChange display-red" *ngIf="parseFloat(column.cell2(row)) < 0">
+                        <span>{{column.cell2(row) | currency: 'USD'}}</span>
+                        <mat-icon>keyboard_arrow_down</mat-icon>
+                    </span>
+    
+                    <span class="portfolioChange display-green" *ngIf="parseFloat(column.cell2(row)) > 0">
+                        <span>{{column.cell2(row) | currency: 'USD'}}</span>
+                        <mat-icon>keyboard_arrow_up</mat-icon>
+                    </span>
+    
+                    <span class="portfolioChange display-gray" *ngIf="parseFloat(column.cell2(row)) === 0">
+                        <span>{{column.cell2(row) | currency: 'USD'}}</span>
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </span>
+                </span>
+    
+                <span class="ajust-font-size" *ngIf="column.columnDef === 'name'" >{{column.cell(row)}}</span>
+            </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

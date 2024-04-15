@@ -1,0 +1,18 @@
+<mat-toolbar *ngIf="!this.router.url.includes('login') && !this.router.url.includes('register') && !this.router.url.includes('reset-password')">
+    <img class="logo" src="assets/simvestfunnoback.png" (click)="this.redirectToHome()">
+    <div class="spacer"></div>
+    <div class="btns" *ngIf="this.authService.getConnectedUser() !== undefined">
+        <button mat-flat-button (click)="redirectToAccount()">
+            <img class="avatar" appGravatar>
+            <span>{{this.authService.getConnectedUser()?.totalPortfolioValue | currency: 'USD'}}</span>
+        </button>
+        <span class="spacer-btns"></span>
+        <button mat-flat-button (click)="logOutUser()">Log Out</button>
+    </div>
+    
+    <div class="btns" *ngIf="this.authService.getConnectedUser() === undefined">
+        <button mat-flat-button (click)="redirectToLogin()">Log In</button>
+        <span class="spacer-btns"></span>
+        <button mat-flat-button (click)="redirectToRegister()">Sign Up</button>
+    </div>
+</mat-toolbar>

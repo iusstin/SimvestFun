@@ -1,0 +1,124 @@
+.container {
+    width: 95%;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+}
+
+div {
+    padding-top: 15px;
+}
+
+mat-icon {
+    font-size: medium;
+    height: auto;
+    width: auto;
+}
+
+th.mat-header-cell {
+    font-size: 15px;
+}
+
+td.mat-cell:first-of-type {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: right;
+}
+
+td.mat-cell:last-of-type {
+    padding-right: 20px;
+}
+
+th.mat-header-cell:last-of-type {
+    padding: 0;
+}
+
+th.mat-header-cell:first-of-type {
+    padding-left: 20px;
+}
+
+td.mat-column-index {
+    text-align: center;
+    width: 7%;
+}
+
+td.mat-column-avatar {
+    text-align: center;
+    width: 8%;
+    padding-right: 10px;
+}
+
+td:hover { 
+    cursor: pointer;
+}
+
+.portfolioChange{
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: small;
+}
+
+.display-red{
+    color: red;
+    font-weight: 500;
+}
+
+.display-green{
+    color:green;
+    font-weight: 500;
+}
+
+.display-gray{
+    color: gray;
+    font-weight: 500;
+}
+
+.leaderboard-name {
+    font-size: 1.1em;
+    padding-top: 6px;
+}
+
+.avatar {
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.align-right {
+    display: flex;
+    justify-content: right;
+    margin-bottom: -15px;
+}
+
+.ajust-font-size {
+    font-size: 15.5px;
+}
+
+.all-users-button {
+    margin-top: 20px;
+    background-color: rgb(241, 241, 241);
+}
+
+.index-position {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.position {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    font-size: 11px;
+}
+
+.pos-icon {
+    font-size: 11px;
+}
+
+@media only screen and (max-width: 800px) {
+    .container{
+        margin: auto;
+        width: 100%;
+    }
+}

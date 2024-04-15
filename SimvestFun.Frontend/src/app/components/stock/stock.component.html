@@ -1,0 +1,17 @@
+<div class="main">
+    <div class="stock-details">
+        <div class="info">
+            <h1>{{this.stock.id}} - {{stock.currentPrice | currency: 'USD'}}</h1> 
+            <h3>{{this.stock.name}}</h3>
+            <span class="change display-red" *ngIf="stock.pricePercentChange < 0">{{stock.pricePercentChange | number: '1.2-2'}}%<mat-icon>arrow_downward</mat-icon></span>
+            <span class="change display-green" *ngIf="stock.pricePercentChange > 0">+{{stock.pricePercentChange | number: '1.2-2'}}%<mat-icon class="flip">arrow_downward</mat-icon></span>
+            <span class="change display-gray" *ngIf="stock.pricePercentChange == 0">{{stock.pricePercentChange | number: '1.2-2'}}%</span>
+            
+            <div class="display">
+                <span class="label">Industry: </span>
+                <h4 class="industry">{{stock.industry}}</h4> 
+            </div>
+        </div>
+        <app-chart class="chart" *ngIf="prices.length !== 0" [chartLabels]="this.dates" [xValues]="this.prices" [chartColor]="this.chartColor"></app-chart>
+    </div>
+</div>

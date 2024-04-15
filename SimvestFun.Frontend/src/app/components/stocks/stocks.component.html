@@ -1,0 +1,50 @@
+<div>
+    <mat-progress-bar class="progress" mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+    
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table" *ngIf="!isLoading">
+        <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+
+            <th mat-header-cell *matHeaderCellDef>
+                {{column.header}}
+            </th>
+
+            <td mat-cell *matCellDef="let row">
+                <button class="symbol-btn" *ngIf="column.columnDef === 'id'" mat-raised-button (click)="showStockDetails(column.cell(row))">{{column.cell(row)}}</button>
+                <span *ngIf="column.columnDef === 'price'">
+                    <span>{{column.cell(row) | currency: 'USD'}}</span> 
+                    <br>
+
+                    <span class="stockValueChange display-red" *ngIf="parseFloat(column.cell2(row)) < 0"
+                    [ngStyle]="{'font-weight': topStocks.includes(row)? '600':'normal'}">
+                        <span>{{column.cell2(row) | number: '1.2-2'}}%</span>
+                        <mat-icon>keyboard_arrow_down</mat-icon>
+                    </span>
+
+                    <span class="stockValueChange display-green" *ngIf="parseFloat(column.cell2(row)) > 0"
+                        [ngStyle]="{'font-weight': topStocks.includes(row)? '600':'normal'}">
+                        <span>{{column.cell2(row) | number: '1.2-2'}}%</span>
+                        <mat-icon>keyboard_arrow_up</mat-icon>
+                    </span>
+
+                    <span class="stockValueChange display-gray" *ngIf="parseFloat(column.cell2(row)) === 0"
+                    [ngStyle]="{'font-weight': topStocks.includes(row)? '600':'normal'}">
+                        <span>{{column.cell2(row) | number: '1.2-2'}}%</span>
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </span>
+                </span>
+
+                <button class="buy-btn" *ngIf="column.columnDef === 'buy' && this.authService.connectedUser != undefined" mat-stroked-button (click)="openBuyDialog(row)">Buy</button>
+                <span *ngIf="column.columnDef !== 'id' && column.columnDef !== 'buy' && column.columnDef !=='price'">{{column.cell(row)}}</span>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+    <p class="stock-info">The New York Stock Exchange is open on <b>work days</b> between 
+        <b>{{startTime | date : "HH:mm"}} - {{endTime | date : "HH:mm"}} </b>
+        in your timezone, 
+        <b>{{timeZone}}</b>.
+    </p>
+</div>

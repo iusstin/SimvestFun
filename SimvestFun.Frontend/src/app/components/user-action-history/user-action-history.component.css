@@ -1,0 +1,38 @@
+.title {
+    color: rgb(68, 68, 68);
+    margin: 0px;
+    font-weight: 500;
+    font-size: large;
+    padding: 5px 0px 5px 20px;
+}
+
+li {
+    list-style: none;
+    color: #1f9397;
+}
+
+ul{
+    padding-left: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px ridge;
+    margin-bottom: 30px;
+}
+
+.load-more {
+    margin-top: 5px;
+}
+
+mat-icon {
+    font-size: 15px;
+    height: 20px;
+}
+
+mat-divider {
+    width: 98%;
+    margin: auto;
+}

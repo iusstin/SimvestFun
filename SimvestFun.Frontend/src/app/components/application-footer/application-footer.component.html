@@ -1,0 +1,7 @@
+<section class="footer-content">
+    <a routerLink="/about" class="link about">About</a>
+    <div class="divider">|</div>
+    <a routerLink="/recent-user-actions" class="link">Recent user actions</a>
+    <div class="divider" *ngIf="connectedUser?.isAdmin">|</div>
+    <a routerLink="/admin" *ngIf="connectedUser?.isAdmin" class="link">Admin</a>
+</section>

@@ -1,0 +1,23 @@
+<div *ngIf="userActions?.length" class="container">
+    <div class="title">
+        <mat-icon>history</mat-icon>
+        <span>Action History</span>
+    </div>
+    <mat-divider role="separator" aria-orientation="horizontal"></mat-divider>
+    <ul>
+        <li *ngFor="let userAction of userActions"
+            [ngStyle]="{'color': userAction.actionType.toLowerCase() === 'buy' ? '#74c874' : userAction.actionType.toLowerCase() === 'sell'? '#1f9397' : 'black'}">
+
+            <mat-icon>{{arrowRight}}</mat-icon>
+            <span *ngIf="getYear(userAction.timeStamp) === currentYear">
+                {{convertToLocal(userAction.timeStamp) | date: 'MMM dd'}} at {{convertToLocal(userAction.timeStamp) | date:'HH:mm'}} - {{userAction.description}}
+            </span>
+            <span *ngIf="getYear(userAction.timeStamp) !== currentYear">
+                {{convertToLocal(userAction.timeStamp) | date: 'MMM dd, y'}} at {{convertToLocal(userAction.timeStamp) | date:'HH:mm'}} - {{userAction.description}}
+            </span>
+        </li>
+        <li class="load-more" *ngIf="canLoadMore">
+            <button mat-raised-button (click)="loadActions(this.loadedActionsCount + this.loadingStep)"> Load more</button>
+        </li>
+    </ul>
+</div>

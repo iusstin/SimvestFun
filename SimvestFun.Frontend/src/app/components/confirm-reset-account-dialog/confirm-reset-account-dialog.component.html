@@ -1,0 +1,9 @@
+<h4 mat-dialog-title>Are you sure?</h4>
+<mat-dialog-content class="mat-typography">
+    <p>This will delete all your user stocks and reset your cash to $10.000</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close cdkFocusInitial>Cancel</button>
+    <button mat-button [mat-dialog-close]="true">Yes</button>
+</mat-dialog-actions>
+

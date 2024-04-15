@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Update profile</h1>
+<div mat-dialog-content class="content">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput #name maxlength="30" [(ngModel)]="newName">
+    <mat-hint align="end">{{name.value.length}} / 30</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="about">
+    <mat-label>About</mat-label>
+    <textarea matInput #about maxlength="300" [(ngModel)]="newAbout"></textarea>
+    <mat-hint align="end">{{about.value.length}} / 300</mat-hint>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close="false">Cancel</button>
+  <button mat-button cdkFocusInitial (click)="updateUserInfo()">Update</button>
+</div>

@@ -1,0 +1,23 @@
+<mat-dialog-content>
+    <div class="lr-display">
+        <h2>{{this.stock?.name}}</h2> 
+        <h3>- {{this.stock?.id}} -</h3>
+        <h3>{{this.stock?.currentPrice | currency : 'USD'}}</h3>
+        <h3 *ngIf="this.userStock?.unitCount">{{this.userStock?.unitCount}} x unit</h3>
+    </div>
+    <div class="lr-display">
+        <span class="balance">Your balance: {{this.user?.cash | currency : 'USD'}}</span>
+        <span class="sell-value">Sell total: {{+this.unitsToSell.value * this.stock.currentPrice | currency : 'USD'}}</span>
+        <mat-form-field>
+            <mat-label tabindex="-1">Quantity</mat-label>
+            <input matInput type="number" #unitsToSell [formControl]="quantity" [(ngModel)]="units">
+            <mat-error *ngIf="this.quantity.hasError('required')">This is a required field</mat-error>
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+<mat-divider class="divider"></mat-divider>
+<mat-dialog-actions>
+    <button mat-raised-button (click)="onOkClick()">Ok</button>
+    <button mat-stroked-button (click)="onCancelClick()">Cancel</button>
+</mat-dialog-actions>
+    

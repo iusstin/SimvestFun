@@ -1,0 +1,56 @@
+.avatar {
+    margin: 5px;
+    vertical-align: middle;
+}
+
+.title {
+    color: rgb(68, 68, 68);
+    font-weight: 500;
+    font-size: large;
+    padding-top: 30px;
+}
+
+mat-icon {
+    font-size: 18px;
+    height: 20px;
+}
+
+.divider {
+    padding: 5px;
+}
+
+.list-container {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.list {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    margin: 0px;
+    font-size: 13px;
+}
+
+.list-mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+
+@media only screen and (max-width: 1140px) {
+
+    mat-divider {
+        height: 5px;
+        width: 100%;
+    }
+}

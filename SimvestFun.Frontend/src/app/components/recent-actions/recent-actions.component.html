@@ -1,0 +1,24 @@
+<div class="title">
+    <mat-icon>history</mat-icon>
+    <span>Recent user actions</span>
+</div>
+<mat-divider class="divider"></mat-divider>
+<div class="list-container">
+    <mat-list *ngIf="colNr == 2" class="list">
+            <div *ngFor="let ac of actions.slice(0,30);let i=index" class="item">
+                <p>{{convertToLocal(ac.timeStamp) | date: 'MMM d, HH:mm'}} - <img class="avatar" [src] = "this.getGravatar(ac.user)">{{ac.user.name}} - {{ac.description}}</p>
+            </div> 
+    </mat-list>
+    <mat-list *ngIf="colNr == 2" class="list">
+        <div *ngFor="let ac of actions.slice(30,actions.length)">
+            <p>{{convertToLocal(ac.timeStamp) | date: 'MMM d, HH:mm'}} - <img class="avatar" [src] = "this.getGravatar(ac.user)">{{ac.user.name}} - {{ac.description}}</p>
+        </div> 
+    </mat-list>
+    <div *ngIf="colNr == 1">
+        <div *ngFor="let ac of actions;" class="list-mobile">
+            <span>{{convertToLocal(ac.timeStamp) | date: 'MMM d, HH:mm'}} - <img class="avatar" [src] = "this.getGravatar(ac.user)">{{ac.user.name}}</span> 
+            <span>{{ac.description}}</span>
+            <mat-divider></mat-divider>
+        </div> 
+    </div>
+</div>

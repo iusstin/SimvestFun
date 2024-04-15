@@ -1,0 +1,59 @@
+<div class="main">
+    <mat-form-field class="search">
+        <input matInput placeholder="Search" [formControl]="name" (keyup.enter)="searchUser()">
+        <mat-icon matSuffix (click)="searchUser()">search</mat-icon>
+    </mat-form-field>
+    <mat-accordion multi class="users-list">
+        <mat-card>
+            <mat-card-content class="header">
+                <div class="left">
+                    <h4 *ngIf="this.window.innerWidth > 600 && !this.name.value">Rank</h4>
+                    <h4 *ngIf="this.window.innerWidth <= 600 && !this.name.value">Rnk</h4>
+                    <h4 class="text">Name</h4>
+                    <h4 class="text">Portfolio Value</h4>
+                    <h4 class="text">Portfolio Change</h4>
+                </div>
+                <div class="stocks" *ngIf="this.window.innerWidth > 600">
+                    <h4>Top Investments</h4>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card *ngFor="let user of users" (click)="this.goToUserPage(user.id)" class="list-item">
+            <mat-card-content class="content">
+                <div class="left">
+                   <span class="rank" *ngIf="!this.name.value && user.currentPosition !== 0">{{user.currentPosition}}</span>
+                   <span class="rank" *ngIf="!this.name.value && user.currentPosition === 0"></span>
+                   <h3 class="text">{{user.name}}</h3>
+                    <span class="text">{{user.totalPortfolioValue | currency: 'USD'}}</span>
+                    <div class="portfolioChange display-red" *ngIf="user.portfolioChange < 0">
+                        <span>-{{-user.portfolioChange | currency: 'USD'}}</span>
+                        <mat-icon>keyboard_arrow_down</mat-icon>
+                    </div>
+                    <div class="portfolioChange display-green" *ngIf="user.portfolioChange > 0">
+                        <span>+{{user.portfolioChange | currency: 'USD'}}</span>
+                        <mat-icon>keyboard_arrow_up</mat-icon>
+                    </div>
+                    <div class="portfolioChange display-gray" *ngIf="user.portfolioChange === 0">
+                        <span>{{user.portfolioChange | currency: 'USD'}}</span>
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </div> 
+                </div>
+                <div class="stocks">
+                    <div class="btns">
+                        <div *ngFor="let s of user.topInvestments?.split(',')">
+                            <button class = "stock-btn" mat-raised-button *ngIf="s !== ''">{{s}}</button>
+                        </div>  
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </mat-accordion>
+    <mat-paginator class="paginator"
+        [hidePageSize]="true"
+        [pageIndex]="this.pageIndex" 
+        [length]="this.totalLength" 
+        [pageSize]="this.pageSize" 
+        aria-label="Select page" 
+        (page)="this.changePage($event)">
+    </mat-paginator>
+</div>

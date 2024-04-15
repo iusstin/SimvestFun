@@ -1,0 +1,116 @@
+mat-form-field {
+    width: 50%;
+}
+
+mat-icon {
+    font-size: medium;
+    height: auto;
+    width: auto;
+}
+
+table {
+    width: 100%;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+}
+
+th.mat-header-cell,
+td.mat-cell {
+    text-align: center;
+}
+
+td.mat-cell:first-of-type {
+    padding-left: 15px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+td.mat-cell:last-of-type {
+    padding-right: 15px;
+    padding-left: 5px;
+}
+
+button {
+    min-width: 0;
+    padding: 0px 7px;
+    width: 100%;
+}
+
+td.mat-column-name { 
+    width: 25%;
+}
+
+th.mat-header-cell {
+    font-size: 15px;
+}
+
+.progress {
+    width: 70%;
+}
+
+.stockValueChange {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    font-size: small;
+}
+
+.display-red {
+    color: red;
+    font-weight: 500;
+}
+
+.display-green {
+    color: green;
+    font-weight: 500;
+}
+
+.display-gray {
+    color: gray;
+    font-weight: 500;
+}
+
+.buy-btn {
+    padding: 0px 12px;
+}
+
+.stock-info {
+    font-size: small;
+    text-align: center;
+    margin-top: 35px;
+}
+
+@media only screen and (max-width: 650px) {
+    table {
+        width: 100%;
+    }
+
+    .progress {
+        width: 100%;
+    }
+
+    th.mat-header-cell,
+    td.mat-cell {
+        font-size: 13px;
+    }
+
+    td.mat-cell:first-of-type {
+        padding-left: 5px;
+    }
+
+    .buy-btn {
+        font-size: 13px;
+    }
+
+    .symbol-btn {
+        font-size: 13px;
+    }
+}
+
+

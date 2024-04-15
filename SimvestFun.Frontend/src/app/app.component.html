@@ -1,0 +1,12 @@
+<body>
+    <header>
+        <app-application-header></app-application-header>
+    </header>
+    <main>
+        <app-loading-spinner></app-loading-spinner>
+        <router-outlet></router-outlet>
+    </main>
+    <footer *ngIf="!this.router.url.includes('login') && !this.router.url.includes('register') && !this.router.url.includes('reset-password')">
+        <app-application-footer></app-application-footer>
+    </footer>
+</body>

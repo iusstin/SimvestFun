@@ -1,0 +1,162 @@
+.display-style {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.register-view {
+    padding-top: 20vh;
+}
+
+#register-card {
+    flex-direction: row;
+    width: 50%;
+}
+
+#card-content {
+    flex-direction: row;
+}
+
+#right {
+    width: 100%;
+}
+
+#left {
+    width: 100%;
+}
+
+.logo {
+    width: 160px;
+    height: 75px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+img {
+    width: 100%;
+    height: calc(35% / 2.5px);
+}
+
+.welcome {
+    font-size: 30px;
+    margin-bottom: 7%;
+}
+
+.icn {
+    width: 35px;
+    height: 35px;
+}
+
+.error {
+    color: red;
+}
+
+.span-down {
+    margin-bottom: 5%;
+}
+
+.social-sign-in {
+    background-color: white;
+    border: 1px solid #D8DDEC;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-size: small;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.social-logo {
+    float: left;
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+    margin-top: 9px;
+    margin-right: 5px;
+}
+
+.social-sign-in>span {
+    vertical-align: middle;
+    padding-top: 5px;
+    padding-left: 3px;
+    text-align: left;
+}
+
+.register-buttons {
+    margin-top: 20px;
+    width: 220px;
+}
+
+form {
+    margin-top: 10px;
+}
+
+h2 {
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+mat-card {
+    padding-top: 5px;
+}
+
+@media only screen and (max-width: 900px) {
+    #card-content {
+        flex-direction: column;
+        height: 90%;
+    }
+
+    #register-card {
+        flex-direction: row;
+        width: 80%;
+    }
+
+    .welcome {
+        margin-top: 25px;
+        font-size: 17px;
+    }
+
+    h2 {
+        font-size: 15px;
+    }
+
+    form {
+        font-size: 11px;
+    }
+
+    .icn {
+        width: 27.5px;
+        height: 27.5px;
+    }
+
+    button {
+        font-size: 10px;
+    }
+
+    img {
+        width: 100%;
+        height: calc(28% / 2.5px);
+    }
+
+    .social-sign-in>img {
+        height: 24px;
+        width: 24px;
+    }
+
+    .social-sign-in>span {
+        padding-top: 3px;
+    }
+}
+
+@media only screen and (max-height: 700px) {
+    img {
+        width: 100%;
+        height: calc(28% / 2.5px);
+    }
+}

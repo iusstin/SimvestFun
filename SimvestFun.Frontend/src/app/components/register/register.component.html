@@ -1,0 +1,77 @@
+<div class="register-view display-style"
+    [ngStyle]="{'padding-top': registerWithPassword ? '15vh' : '20vh'}" *ngIf="socialInitialized">
+    <mat-card id="register-card">
+        <mat-card-header>
+            <div class="logo"><img src="assets/simvestfunnoback.png" (click)="redirectToHome()"></div>
+        </mat-card-header>
+
+        <mat-divider inset></mat-divider>
+        
+        <mat-card-content id="card-content" class="display-style">
+            <div class="display-style" id ="left">
+                <form [formGroup]="registerForm" class="display-style" *ngIf="registerWithPassword">
+                    <h2>Create an Account</h2>
+                    <br>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name</mat-label> 
+                        <div class="icn display-style" matSuffix><mat-icon>edit</mat-icon></div>
+                        <input matInput #nameInput maxlength="30" type="text" formControlName="name"/>
+                        <mat-hint align="end">{{nameInput.value.length}} / 30</mat-hint>
+                        <mat-error *ngIf="this.name?.invalid">This is a required field</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label> 
+                        <div class="icn display-style" matSuffix><mat-icon>alternate_email</mat-icon></div>
+                        <input matInput type="email" #emailInput maxlength="100" formControlName="email"/>
+                        <mat-hint align="end">{{emailInput.value.length}} / 100</mat-hint>
+                        <mat-error *ngIf="this.email?.hasError('required')">This is a required field</mat-error>
+                        <mat-error *ngIf="this.email?.hasError('email')">Invalid email address</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput [type]="hidePass ? 'password' : 'text'" formControlName="password"/>
+                        <mat-error *ngIf="this.password?.invalid">This is a required field</mat-error>
+                        <button mat-icon-button matSuffix (click)="hidePass = !hidePass"  [attr.aria-pressed]="hidePass">
+                            <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Repeat password</mat-label>
+                        <input matInput [type]="hidePass ? 'password' : 'text'" formControlName="passwordCheck"/>
+                        <mat-error *ngIf="this.passwordCheck?.hasError('required')">This is a required field</mat-error>
+                        <button mat-icon-button matSuffix (click)="hidePass = !hidePass"  [attr.aria-pressed]="hidePass">
+                            <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    
+                    <button mat-raised-button (click)="registerUser()">Sign Up</button>
+                </form>
+
+                <div class="register-buttons" *ngIf="!registerWithPassword">
+
+                    <button mat-raised-button class="social-sign-in" (click)="registerGoogleUser()">
+                        <img [src]="'assets/google.svg'" alt="google" class="social-logo"/>
+                        <span>Register with Google</span>
+                    </button>
+
+                    <button mat-raised-button class="social-sign-in" (click)="registerFacebookUser()">
+                        <img [src]="'assets/facebook.svg'" alt="facebook" class="social-logo"/>
+                        <span>Register with Facebook</span>
+                    </button>
+
+                    <button mat-raised-button class="social-sign-in" (click)="navigateToRegisterWithPassword()">
+                        <img [src]="'assets/icon.png'" alt="application-register" class="social-logo"/>
+                        <span>Register with password</span>
+                    </button>
+
+                </div>
+            </div>
+        
+            <div id="right" class="display-style">
+                <span class="welcome">Welcome!</span>
+                <span class="span-down">Already have an account?</span>
+                <button mat-stroked-button (click)="redirectToLogin()">Log In</button>
+            </div>
+        </mat-card-content>  
+    </mat-card>
+</div>

@@ -1,0 +1,16 @@
+<h3>Make or edit an announcement:</h3>
+<mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Announcement</mat-label>
+    <textarea matInput
+              [(ngModel)]="announcementMessage"
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="10">
+    </textarea>
+</mat-form-field>
+<div class="save-announcement-button">
+    <button class="save-button" mat-stroked-button (click)="saveAnnouncement()">Post</button>
+    <button mat-stroked-button (click)="deleteAnnouncement()">Delete</button>
+</div>
+

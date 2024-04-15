@@ -1,0 +1,94 @@
+.mat-dialog-content {
+    display: flex;
+    flex-direction: row;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.mat-dialog-actions {
+    justify-content: flex-end;
+}
+
+.lr-display {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 40px 0px 40px;
+}
+
+h2 {
+    font-size: larger;
+}
+
+h3 {
+    font-size: medium;
+}
+
+.quantity-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.max-btn {
+    margin-left: 10px;
+    padding: 0px;
+}
+
+.div {
+    height: 15%;
+    width: 100%;
+}
+.balance {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.bid {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.divider {
+    margin-top: 5px;
+    width: 100%;
+}
+
+mat-form-field {
+    width: 120px;
+}
+
+@media only screen and (max-width: 900px) {
+    .mat-dialog-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .balance {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .bid {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .lr-display {
+        margin: 0px;
+    }
+}
+
+@media only screen and (max-height: 750px) {
+    .dialog {
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 13px;
+    }
+}

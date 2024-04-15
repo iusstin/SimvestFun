@@ -1,0 +1,233 @@
+h3 {
+    font-weight: 600;
+}
+
+.stocks-list {
+    width: 100%;
+    border: 1px ridge;
+    margin-bottom: 2%;
+}
+
+.layout {
+    display: flex;
+    justify-content: center;
+}
+
+.mat-list-base .mat-list-item .mat-line.total {
+    font-weight: 500;
+}
+
+.mat-list-base .mat-list-item .mat-line.stock-id {
+    font-weight: 500;
+}
+
+.stock-id {
+    cursor: pointer;
+}
+
+.stock-id:hover {
+    text-decoration: underline;
+}
+
+.icn {
+    margin-right: 5px;
+}
+
+.header {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header > button {
+    height: fit-content;
+}
+
+.actions-button {
+    min-width: auto;
+    padding: 0px 10px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+mat-icon {
+    height: auto;
+    width: auto;
+    font-size: medium;
+}
+
+.profile {
+    display: flex;
+}
+
+.user-details {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+    margin-top: 0px;
+    font-weight: 400;
+}
+
+.user-details > .name {
+    margin: 0;
+}
+
+.about-user {
+    text-align: justify;
+}
+
+.profile-photo {
+    width: min-content;
+}
+
+.fit-center {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    border: 1px;
+}
+
+.display-red {
+    color: red;
+}
+
+.display-green {
+    color:green;
+}
+
+.display-gray {
+    color: gray;
+}
+
+.change {
+    width: 100%;
+    font-weight: 500;
+    font-size: small;
+    text-align: right;
+}
+
+.value-change {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5%;
+}
+
+.stock-value {
+    margin-right: 5%;
+}
+
+.spacer-btns {
+    width: 64px;
+    height: 36px;
+}
+
+.account-info {
+    margin-right: 5%;
+}
+
+.portfolio-chart {
+    width: 1100px;
+    margin: 50px auto;
+}
+
+.chart-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 0px 5px 20px;
+    font-weight: 500;
+    font-size: large;
+}
+
+.chart-icon {
+    height: 21px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+}
+
+.heading-buttons {
+    display: flex;
+    height: fit-content;
+}
+
+.followers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+
+.follower {
+    padding: 5px 8px;
+}
+
+.follower-img:hover {
+    cursor: pointer;
+}
+
+.followers-header {
+    padding: 5px 0px 5px 20px;
+    font-weight: 500;
+    font-size: large;
+}
+
+.followers-icon {
+    margin-right: 5px;
+}
+
+@media only screen and (max-width: 900px) {
+    .stocks-list {
+        width: 100%;
+    }
+
+    .mat-line.total .account-info {
+        font-size: 2px;
+    }
+
+    .portfolio-values {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .user-name {
+        white-space: normal;
+    }
+
+    .stock-value {
+        margin-right: 5%;
+    }
+    
+    .header {
+        flex-direction: column;
+    }
+    
+    .header>button {
+        margin-top: 20px;
+    }
+
+    .actions-button {
+        margin-right: 0px;
+        margin-top: 5px;
+    }
+
+    .heading-buttons {
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 5px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media only screen and (max-width: 1140px) {
+    .portfolio-chart {
+        width: 100%;
+    }
+}

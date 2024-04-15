@@ -1,0 +1,88 @@
+<section class="header">
+    <div class="profile">
+        <div class="profile-photo">
+            <img class="avatar" src="{{this.avatar}}">
+            <button mat-raised-button *ngIf="isTheConnectedUser" (click)="openChangePhotoDialog()">Change Photo</button>
+        </div>
+        <span class="user-details">
+            <h3 class="name">{{this.user?.name}}</h3>
+            <p class="about-user">{{this.user?.about}}</p>
+        </span>
+    </div>
+    <div class="heading-buttons">
+        <button class="actions-button" *ngIf="isTheConnectedUser || connectedUser?.isAdmin" mat-raised-button
+            [matMenuTriggerFor]="beforeMenu">
+            <span>Actions</span>
+            <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+            <button mat-menu-item (click)="openChangeDetailsComponent()">Edit Account Details</button>
+            <button mat-menu-item *ngIf="isTheConnectedUser" (click)="openResetConfirmDialog()">Reset Account</button>
+        </mat-menu>
+        <button mat-raised-button *ngIf="!isTheConnectedUser && this.connectedUser != undefined"
+            (click)="followAction()">{{this.followButtonText}}</button>
+    </div>
+</section>
+
+<div *ngIf="this.userStocks != []" class="layout">
+    <mat-list role="list" class="stocks-list">
+        <mat-list-item>
+            <mat-icon class="icn"> insert_chart_outlined</mat-icon>
+            <h3>Portfolio</h3>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let us of this.userStocks" role="listitem">
+            <h3 mat-line class="stock-id" routerLink="/stock/{{us.stock.id}}">{{us.stock.id}}</h3>
+            <span mat-line>{{us.stock.currentPrice | currency: 'USD'}}/Unit x  {{us.unitCount}}</span> 
+            <div class="value-change">
+                <span class="stock-value">{{us.stock.currentPrice * us.unitCount | currency: 'USD'}}</span>
+                <span class="change display-red" *ngIf="us.stock.currentPrice - us.buyingPricePerUnit < 0">-{{-(us.stock.currentPrice - us.buyingPricePerUnit) * us.unitCount | currency: 'USD'}}</span>
+                <span class="change display-green" *ngIf="us.stock.currentPrice - us.buyingPricePerUnit > 0">+{{(us.stock.currentPrice - us.buyingPricePerUnit) * us.unitCount | currency: 'USD'}}</span>
+                <span class="change display-gray" *ngIf="us.stock.currentPrice - us.buyingPricePerUnit == 0">{{(us.stock.currentPrice - us.buyingPricePerUnit) * us.unitCount | currency: 'USD'}}</span>
+            </div>  
+            <button *ngIf="isTheConnectedUser" class="sell-btn"  mat-stroked-button (click)="openSellDialog(us)">Sell</button>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item class="portfolio-values">
+            <h3 mat-line class="total">Total investment value:</h3> <span class="account-info">{{this.getTotalValue() | currency: 'USD'}}</span>
+            <span *ngIf="isTheConnectedUser" class="spacer-btns"></span>
+        </mat-list-item>
+        <mat-list-item class="portfolio-values">
+            <h3 mat-line class="total">Available cash:</h3> <span class="account-info">{{this.user?.cash | currency: 'USD'}}</span>
+            <span *ngIf="isTheConnectedUser" class="spacer-btns"></span>
+        </mat-list-item>
+        <mat-list-item class="portfolio-values">
+            <h3 mat-line class="total">Total portfolio value:</h3> <span class="account-info">{{this.user?.totalPortfolioValue | currency: 'USD'}}</span>
+            <span *ngIf="isTheConnectedUser" class="spacer-btns"></span>
+        </mat-list-item>
+    </mat-list>
+</div>
+
+<section class="portfolio-chart" *ngIf="this.values.length > 1">
+    <div class="chart-header">
+        <mat-icon class="chart-icon">timeline</mat-icon>
+        <span class="chart-title">Portfolio history</span>
+    </div>
+    <app-chart
+        [height]="this.chartHeight"
+        [chartLabels]="this.dates" 
+        [xValues]="this.values" 
+        [chartColor]="this.chartColor">
+    </app-chart>
+</section>
+
+<section *ngIf="this.followers.length > 0">
+    <div class="followers-header">
+        <mat-icon class="followers-icon">group</mat-icon>
+        <span class="followers-title">Followers</span>
+    </div>
+    <div class="followers">
+        <div class="follower" *ngFor="let follower of this.followers">
+            <img class="follower-img" src="//www.gravatar.com/avatar/{{follower.emailHash}}?s=60&d=identicon" title="{{follower.name}}"
+                routerLink="/user/{{follower.id}}">
+        </div>
+    </div>
+</section>
+
+<app-user-action-history *ngIf="this.user" class="fit-center" [events]="actionTrigger.asObservable()" [user]="this.user"></app-user-action-history>

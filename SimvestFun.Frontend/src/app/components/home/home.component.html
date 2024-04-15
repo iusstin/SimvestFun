@@ -1,0 +1,23 @@
+<article class="announcement" *ngIf="announcementMessage">
+    <p class="announcement-text" [innerHTML]="announcementMessage"></p>
+</article>
+<article *ngIf="!this.hide">
+    <p class="description">
+        Simvest.fun is an investing simulator. You get virtual money - $10,000 - and may invest them in top US companies. The stock prices are real and updated frequently...
+        <a routerLink="/about">(show more)</a>
+        <a (click)="hideDescription()" title="Hide description" class="hide-description">(hide)</a>
+    </p>
+</article>
+<div class="flex-container">
+    <div class="flex-item-col1">
+        <app-followboard [events]="updateBonus.asObservable()"></app-followboard>
+        <app-leaderboard [events]="updateBonus.asObservable()"></app-leaderboard>
+    </div>
+    <div class="flex-item-col2">
+        <app-stocks></app-stocks>
+    </div>
+</div>
+
+<article>
+    <app-share-blurb class="share-blurb"></app-share-blurb>
+</article>

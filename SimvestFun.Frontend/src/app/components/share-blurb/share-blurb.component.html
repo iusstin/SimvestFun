@@ -1,0 +1,12 @@
+<div class="container">
+    <p>Like this website? Support us by sharing it with your friends, it would encourage us to keep maintaining and
+    improving it.
+    </p>
+    <button *ngIf="isMobile" class="share-button" mat-raised-button (click)="shareApi()">Share</button>
+    <div *ngIf="!isMobile" class="fb-share-button fb-share" data-href="https://simvest.fun/" data-layout="button" data-size="large">
+        <a target="_blank"
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsimvest.fun%2F&amp;src=sdkpreparse"
+            class="fb-xfbml-parse-ignore">Share
+        </a>
+    </div>
+</div>

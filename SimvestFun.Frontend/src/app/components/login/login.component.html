@@ -1,0 +1,58 @@
+<div class="login-view display-style" *ngIf="socialInitialized">
+    <mat-card id="login-card">
+        <mat-card-header>
+            <div class="logo"><img src="assets/simvestfunnoback.png" (click)="redirectToHome()"></div>
+        </mat-card-header>
+
+        <mat-divider inset></mat-divider>
+        
+        <mat-card-content id="card-content" class="display-style">
+            <div id="left" class="display-style">
+                <span class="span-down">Don't have an account?</span>
+                <button mat-stroked-button (click)="redirectToRegister()">Sign Up</button>
+            </div>
+            
+            <div id="right" class="display-style">
+                <form [formGroup]="loginForm" class="display-style" *ngIf="loginWithPassword">
+                    <h2>Login to Your Account</h2>
+                    <br>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label> 
+                        <div class="email-icn display-style" matSuffix><mat-icon>account_circle</mat-icon></div>
+                        <input matInput type="email" formControlName="email" required/>
+                        <mat-error *ngIf="this.email?.hasError('required')">This is a required field</mat-error>
+                        <mat-error *ngIf="this.email?.hasError('email')">Invalid email address</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput [type]="hidePass ? 'password' : 'text'" formControlName="password"/>
+                        <mat-error *ngIf="this.password?.invalid">This is a required field</mat-error>
+                        <button mat-icon-button matSuffix (click)="hidePass = !hidePass"  [attr.aria-pressed]="hidePass">
+                            <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <button class="login-btn" mat-raised-button (click)="logInWithPassword()">Log In</button>
+                    <a class="forgot-password" (click)="redirectToForgotPassword()">Forgot Password?</a>
+                </form>
+    
+                <div class="social-buttons" *ngIf="!loginWithPassword">
+
+                    <button mat-raised-button class="social-sign-in" (click)="logInWithGoogle()">
+                        <img [src]="'assets/google.svg'" alt="google" class="social-logo"/>
+                        <span>Login with Google</span>
+                    </button>
+
+                    <button mat-raised-button class="social-sign-in" (click)="logInWithFacebook()">
+                        <img [src]="'assets/facebook.svg'" alt="facebook" class="social-logo"/>
+                        <span>Login with Facebook</span>
+                    </button>
+
+                    <button mat-raised-button class="social-sign-in" (click)="redirectToPasswordLogin()">
+                        <img [src]="'assets/icon.png'" alt="application" class="social-logo"/>
+                        <span>Login with Password</span>
+                    </button>
+                </div>
+            </div>
+        </mat-card-content>  
+    </mat-card>
+</div>

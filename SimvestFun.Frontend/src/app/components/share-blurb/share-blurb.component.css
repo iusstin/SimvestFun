@@ -1,0 +1,38 @@
+.container {
+    padding-left: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+p {
+    margin: 0;
+}
+
+.share-button {
+    padding: 0px 12px;
+    margin-left: 10px;
+}
+
+.fb-share {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+}
+
+@media only screen and (max-width: 400px) {
+    .container {
+        flex-direction: column;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .share-button {
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+}
